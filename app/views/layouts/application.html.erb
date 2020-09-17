@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>FRS</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<header>
+  <% if user_signed_in? %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <%= link_to "Fashion Recommender's", user_path(current_user), class: "navbar-brand" %>
+    <div class="pull-right">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "User Home", user_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Topics", topics_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "User Profile", profile_user_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign out", destroy_user_session_path, class: "nav-link", method: :delete %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Recommender</a>
+            <div class="dropdown-menu">
+              <% if current_user.isRecommender %>
+                <a class="dropdown-item" href="#">View the request</a>
+                <div class="dropdown-divider"></div>
+              <% else %>
+                <a class="dropdown-item" href="#">To Be Recommender</a>
+                <div class="dropdown-divider"></div>
+              <% end %>
+              <a class="dropdown-item" href="#">※Coutions when Recommend</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+  </nav>
+  <% end %>
+</header>
+
+<main>
+  <%= yield %>
+</main>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<% # views/users/editでプロフィールを変更できるのでそこに記述 %>
+<% # headタグの部分はapp/views/layouts/application.html.erbで記入済みなので必要ない %>
+<% # todo:BootStrapのグリッドシステムの導入 %>
+<% # グリッドシステムで現在のプロフィール画像を横に置いてもいいかも %>
+
+<h3 class="card-header">Request header</h3>
+<div class="card-body">
+  <h5 class="card-title">Please write your request</h5>
+</div>
+<% # ↓エラーメッセージのテンプレート，resourceが引数になっている %>
+<%= render "devise/shared/error_messages", resource: @user %>
+​
+<%= form_with model: @user do |f| %>
+  <div class="form-group">
+    <label for="avatar">Choose your picture:</label><br>
+    <%= f.attachment_field :profile_image %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, class: "col-form-label", for: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "name", id: "name" %>
+  </div>
+  ​
+  <% # ↓f.selectの書き方，第1引数にカラム，第2引数にデータ，第3引数は空，第4引数はcssのclassとidを格納する %>
+  <div class="form-group">
+    <label for="age">select age [歳]</label><br>
+    <%= f.select :age, {'Not select': 1, '~18': 2, '18~': 3, '20~': 4, '25~': 5, '30~': 6, '35~': 7, '40~': 8, '45~': 9, '50~': 10, '55~': 11, '60~': 12}, {}, {class: 'form-control', id: 'age'} %>
+  </div>
+  ​
+  <div class="form-group">
+    <label for="height">select gender</label>
+    <select class="form-control" id="gender">
+      <option> Not select</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Others</option>
+    </select>
+  </div>
+  ​
+  ​
+  <div class="form-group">
+    <label for="height">select height [cm]</label>
+    <select class="form-control" id="height">
+      <option>Not select</option>
+      <option>～139</option>
+      <option>140～</option>
+      <option>150～</option>
+      <option>160～</option>
+      <option>170～</option>
+      <option>180～</option>
+      <option>190～</option>
+      <option>200～</option>
+    </select>
+  </div>
+  ​
+  <div class="form-group">
+    <label for="weight">select weight [kg]</label>
+    <select class="form-control" id="weight">
+      <option>Not select</option>
+      <option>～39</option>
+      <option>40～</option>
+      <option>50～</option>
+      <option>60～</option>
+      <option>70～</option>
+      <option>80～</option>
+      <option>90～</option>
+    </select>
+  </div>
+  ​
+  ​
+  <div class="form-group">
+    <label class="col-form-label" for="west">West</label>
+    <input type="text" class="form-control" placeholder="west" id="west">
+  </div>
+  ​
+  <div class="form-group">
+    <label class="col-form-label" for="hip">Hip</label>
+    <input type="text" class="form-control" placeholder="hip" id="hip">
+  </div>
+  ​
+  <div class="form-group">
+    <label class="col-form-label" for="chest">Chest</label>
+    <input type="text" class="form-control" placeholder="chest" id="chest">
+  </div>
+  ​
+  <div class="form-group">
+    <% # introductionでカラムに自己プロフィールとかを書けるようにしたいて感じです %>
+    <label for="exampleTextarea">Other order</label>
+    <textarea class="form-control" id="Other" rows="3"></textarea>
+  </div>
+
+  <%= f.submit "Update user profile", class: "btn btn-primary" %>
+<% end %>

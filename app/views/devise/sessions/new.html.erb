@@ -1,0 +1,30 @@
+<div class="signin-field">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="form-structor">
+      <div class="signin">
+        <section class="hero is-fullheight has-text-centered hero--bg">
+          <div class="hero-body">
+            <div class="container container--hero">
+              <h1 class="title title--hero">
+                FaReS
+              </h1>
+            </div>
+          </div>
+        </section>
+        <h2 class="form-title" id="signin">Log in</h2>
+        <div class="form-holder">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "input", placeholder: "nameID" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "input", placeholder: "Password" %>
+        </div>
+        <%= f.submit "Log in", class: 'submit-btn' %>
+        <%= link_to "Sign up", new_user_registration_path, class: "submit-btn text-center" %>
+      </div>
+      <div class="center"></div>
+    </div>
+    <% if devise_mapping.rememberable? %>
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me, style: "font-size: 10"%>
+    <% end %>
+  <% end %>
+</div>
