@@ -8,6 +8,6 @@ class User < ApplicationRecord
   attachment :profile_image
   has_many :topics, dependent: :destroy
   has_many :recommends, dependent: :destroy
-  validates :name, presence: true, format: { with: VALID_PASSWORD_REGEX, message: "は12文字までの半角英小文字・数字で構成してください。" }
+  validates :name, presence: true, format: { with: VALID_PASSWORD_REGEX, message: "は12文字までの半角英小文字・数字\nで構成してください。" }
   validates :introduction, length: { maximum: 50 }
 end

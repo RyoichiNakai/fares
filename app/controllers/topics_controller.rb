@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   # before_action :authenticate_user!
-  before_action :set_topic, only: [:show, :delete]
-  # before_action :baria_topic, only: [:show, :new, :create]
+  before_action :set_topic, only: [:show, :destroy]
+  before_action :baria_topic, only: [:show]
 
   def index
     @topics = Topic.all
@@ -22,14 +22,14 @@ class TopicsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @topic.destroy
     redirect_to user_path(current_user)
   end
 
   private
   def topic_params
-    params.require(:topic).permit(:image, :text)
+    params.require(:topic).permit(:image, :text, :x, :y, :width, :height)
   end
 
   def baria_topic
