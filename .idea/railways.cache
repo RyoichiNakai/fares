@@ -20,12 +20,12 @@
                           PATCH  /users/:id(.:format)                                                                     users#update
                           PUT    /users/:id(.:format)                                                                     users#update
              profile_user GET    /users/:id/profile(.:format)                                                             users#profile
+               roles_user GET    /users/:id/roles(.:format)                                                               users#roles
          topic_recommends POST   /topics/:topic_id/recommends(.:format)                                                   recommends#create
      edit_topic_recommend GET    /topics/:topic_id/recommends/:id/edit(.:format)                                          recommends#edit
           topic_recommend DELETE /topics/:topic_id/recommends/:id(.:format)                                               recommends#destroy
                    topics GET    /topics(.:format)                                                                        topics#index
                           POST   /topics(.:format)                                                                        topics#create
-                new_topic GET    /topics/new(.:format)                                                                    topics#new
                     topic GET    /topics/:id(.:format)                                                                    topics#show
                           DELETE /topics/:id(.:format)                                                                    topics#destroy
                refile_app        /attachments                                                                             #<Refile::App app_file="/Users/ryoichinakai/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/bundler/gems/refile-46b4178654e6/lib/refile/app.rb">
