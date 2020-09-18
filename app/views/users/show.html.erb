@@ -31,27 +31,10 @@
       </div>
     </div>
     <div class="col-lg-4">
-      <% # 画像トリミング部分 %>
-
-      <div class="card mb-3">
-        <h3 class="card-header">投稿する</h3>
-        <div class="d-flex justify-content-center align-items-center m-2">
-          <%= attachment_image_tag @topic, :image, :fill, 200, 200, fallback: "no_cloth.jpg", size: "200x200", class: "item_img" %>
-        </div>
-        <%= form_with model: @topic do |f| %>
-          <div class="form-group m-2">
-            <label for="avatar">写真を選んでください</label><br>
-            <%= f.file_field :image, class: "upload-img" %>
-          </div>
-          <br>
-          <div class="form-group m-2">
-            <% # 依頼したい服の傾向 %>
-            <label for="exampleTextarea">服の好みや要望などを記入してください</label>
-            <%= f.text_area :text, class: "form-control", id: "text", rows: "3" %>
-          </div>
-          <%= f.submit "投稿する", class: "btn btn-secondary pull-right m-2" %>
-        <% end %>
-      </div>
+      <%= render 'layouts/shared/profile', user: @user %>
+      <% if @user.id == current_user.id %>
+        <%= render 'layouts/shared/post_topics', topic: @topic %>
+      <% end %>
     </div>
   </div>
 </div>
