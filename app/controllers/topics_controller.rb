@@ -1,7 +1,8 @@
 class TopicsController < ApplicationController
   # before_action :authenticate_user!
   before_action :set_topic, only: [:show, :delete]
-  before_action :baria_topic, only: [:show, :new, :create]
+  # before_action :baria_topic, only: [:show, :new, :create]
+
   def index
     @topics = Topic.all
   end
@@ -10,17 +11,14 @@ class TopicsController < ApplicationController
     @recommends = Recommend.all
   end
 
-  def new
-    @topic = Topic.new
-  end
-
   def create
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
     if @topic.save
       redirect_to topic_path(@topic)
     else
-      render :new
+      @user = current_user
+      render 'users/show'
     end
   end
 

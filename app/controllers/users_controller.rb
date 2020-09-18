@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @topic = Topic.new
-    @topics = Topic.find_by(user_id: current_user.id)
+    @topics = Topic.where(user_id: current_user.id)
   end
 
   def profile

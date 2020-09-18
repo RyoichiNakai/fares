@@ -1,9 +1,8 @@
-<div class="signin-field">
+<div class="devise-field">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-
-    <div class="form-structor">
-      <div class="signin">
+    <div class="form-structor-sign-in">
+      <div class="sign-in">
         <section class="hero is-fullheight has-text-centered hero--bg">
           <div class="hero-body">
             <div class="container container--hero">
@@ -13,7 +12,7 @@
             </div>
           </div>
         </section>
-        <h2 class="form-title" id="signin">Log in</h2>
+        <h2 class="form-title" id="sign-in">Log in</h2>
         <div class="form-holder">
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "input", placeholder: "nameID" %>
           <%= f.password_field :password, autocomplete: "current-password", class: "input", placeholder: "Password" %>
