@@ -2,68 +2,53 @@
   <%= render "devise/shared/error_messages", resource: @topic %>
   <div class="row">
     <div class="col-lg-4">
-      <h3 class="card-header">あなたが投稿した写真</h3>
-      <div class="card">
-        <%= attachment_image_tag @topic, :image, :fill, 100, 180, fallback: "no_image.jpg",width: "100%",height:"180"%>
-        <div class="card-body">
-          <h5 class="card-title">Aki2525さんの投稿</h5>
-          <p class="card-text">メランジの暖かみのある素材感が特徴的なVネックニット。
-            ネック部分はシャツやカットソーと合わせた際に、綺麗な見えかたとなるようデザインされています。
-            ラグランスリーブのゆったりとしたシルエットが、今シーズンらしいリラックス感のあるスタイリングを演出してくれます。
-            #少しまだ暑いこのタイミングでオススメの1枚！</p>
+      <div class="card mb-3">
+        <h3 class="card-header"><%= @topic.user.name %>さんの投稿</h3>
+        <div class="d-flex justify-content-center align-items-center m-2">
+          <%= attachment_image_tag @topic, :image, :fill, 200, 200, fallback: "no_cloth.jpg", size: "200x200" %>
         </div>
-        <div class="card-footer">
-          <small class="text-muted">2時間前に投稿されました</small>
+        <div class="card-body">
+          <h5>服の好み・要望</h5>
+          <p class="card-text"><%= @topic.text %></p>
+          <% if current_user.isRecommender or @topic.user_id != current_user.id %>
+          <div class="d-flex justify-content-center align-items-center m-1">
+              <div class="btn-group">
+                <%= link_to "服の提案をする", topic_recommends_path(@topic), class: "btn btn-md btn-outline-secondary", style: "text-decoration: none;", method: :post %>
+              </div>
+          </div>
+          <% end %>
+        </div>
+        <div class="card-footer d-flex justify-content-end align-items-center">
+          <small class="text-muted"><%= @topic.created_at %></small>
         </div>
       </div>
     </div>
     <div class="col-lg-8">
-      <h3 class="card-header">レコメンダの推薦</h3>
-      <div class="card-group">
-        <div class="card">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap">
-            <%= attachment_image_tag @topic, :image, :fill, 100, 180, fallback: "no_image.jpg",width: "100%",height:"180"%>
-          </svg>
-          <div class="card-body">
-            <h5 class="card-title">中山さんの案</h5>
-            <p class="card-text">メランジの暖かみのある素材感が特徴的なVネックニット。
-              ネック部分はシャツやカットソーと合わせた際に、綺麗な見えかたとなるようデザインされています。
-              ラグランスリーブのゆったりとしたシルエットが、今シーズンらしいリラックス感のあるスタイリングを演出してくれます。
-              #少しまだ暑いこのタイミングでオススメの1枚！</p>
+      <h3 class="card-header" style="background-color: white;">レコメンダによる提案</h3>
+      <%#= @recommends.each do |r| %>
+        <div class="card text-white bg-secondary m-2" style="width: 100%; border-radius: 20px;">
+        <h5 class="card-header">レコメンダの名前さんによる提案</h5>
+        <div class="card-body">
+          <div class="d-flex justify-content-start">
+            <%= attachment_image_tag @topic, :image, :fill, 200, 200, fallback: "no_cloth.jpg", size: "200x200", class: "m-1"%>
+            <div class="p-2">
+              <h5 class="card-title">提案内容</h5>
+              <p class="card-text">
+                  これだとかっこいいよ
+              </p>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">30分前に投稿されました</small>
-          </div>
-        </div>
-        <div class="card">
-          <%= attachment_image_tag @topic, :image, :fill, 100, 180, fallback: "no_image.jpg",width: "100%",height:"180"%>
-          <div class="card-body">
-            <h5 class="card-title">馬場さんの案</h5>
-            <p class="card-text">いつものプリントＴシャツとは少し違い落ち感やゆるっと感がさらにＵＰしたスムース素材のＴシャツ！
-              また、袖の長さはひじが隠れるくらいの長さで夏っぽさが出過ぎない印象に。
-              インナーにも使いやすい秋らしい雰囲気が漂う1着となってます。</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">45分前に投稿されました</small>
+          <div class="d-flex justify-content-end">
+            <div class="btn-group">
+              <%= link_to "このレコメンダを評価する", user_path(@topic.user), class: "btn btn-outline-primary", style: "text-decoration: none;" %>
+            </div>
           </div>
         </div>
-        <div class="card">
-          <%= attachment_image_tag @topic, :image, :fill, 100, 180, fallback: "no_image.jpg",width: "100%",height:"180"%>
-          <div class="card-body">
-            <h5 class="card-title">三浦さんの案</h5>
-            <p class="card-text">クティールから待望のロンＴが登場！！
-              Ｔシャツでも大好評頂いているイラストレーターさんとのコラボアイテム！
-              半袖はもう飽きた！っていう方に超オススメの1着。
-              これからの時期に絶対1着は持っておきたいロンＴ。
-              レトロ可愛いイラストがトレンド感と個性が絶妙にマッチした1枚になってます！</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">1時間前に投稿されました</small>
-          </div>
+        <div class="card-footer d-flex justify-content-end align-items-center">
+          <small class="text-muted">30分前に投稿されました</small>
         </div>
       </div>
-      <%= form_with model: @topic do |f| %>
-      <% end %>
+      <%# end %>
     </div>
   </div>
 </div>

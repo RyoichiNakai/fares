@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_topic, only: [:show, :destroy]
   before_action :baria_topic, only: [:show]
 
@@ -29,12 +29,13 @@ class TopicsController < ApplicationController
 
   private
   def topic_params
-    params.require(:topic).permit(:image, :text, :x, :y, :width, :height)
+    params.require(:topic).permit(:image)
   end
 
   def baria_topic
     topic = Topic.find(params[:id])
-    unless topic.user.id != current_user.id
+    unless topic.user_id == current_user.id
+      flash[:alert] = "ページ遷移できません"
       redirect_back fallback_location: request.url
     end
   end
