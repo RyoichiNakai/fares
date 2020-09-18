@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :profile, :edit, :update]
 
   def show
-    @topics = Topic.find_by(use_id: current_user.id)
+    @topic = Topic.new
+    @topics = Topic.find_by(user_id: current_user.id)
   end
 
   def profile

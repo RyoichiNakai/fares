@@ -1,6 +1,7 @@
 <div class="signin-field">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
+
     <div class="form-structor">
       <div class="signin">
         <section class="hero is-fullheight has-text-centered hero--bg">
@@ -18,7 +19,7 @@
           <%= f.password_field :password, autocomplete: "current-password", class: "input", placeholder: "Password" %>
         </div>
         <%= f.submit "Log in", class: 'submit-btn' %>
-        <%= link_to "Sign up", new_user_registration_path, class: "submit-btn text-center" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "submit-btn text-center", style: "text-decoration: none;" %>
       </div>
       <div class="center"></div>
     </div>
