@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_topic, only: [:show, :destroy]
+  before_action :set_topic, only: [:show]
   before_action :baria_topic, only: [:show]
 
   def index
@@ -36,7 +36,7 @@ class TopicsController < ApplicationController
     topic = Topic.find(params[:id])
     unless topic.user_id == current_user.id
       flash[:alert] = "ページ遷移できません"
-      redirect_back fallback_location: request.url
+      redirect_to user_path(current_user)
     end
   end
 

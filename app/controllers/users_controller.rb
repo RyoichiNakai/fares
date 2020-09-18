@@ -33,8 +33,8 @@ class UsersController < ApplicationController
 
   def baria_user
     user = User.find(params[:id])
-    unless user == current_user
-      redirect_back fallback_location: request.url
+    unless user.id == current_user.id
+      redirect_to user_path(current_user)
     end
   end
 
