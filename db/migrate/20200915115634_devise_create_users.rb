@@ -43,6 +43,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.text :introduction
       t.boolean :isRecommender, default: false, null: false
       t.boolean :isOfficial, default: false, null: false
+      t.string :real_name
+      t.string :phone_number
+      t.string :address
 
       t.timestamps null: false
     end

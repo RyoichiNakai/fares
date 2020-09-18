@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # before_action :authenticate_user!
-  before_action :baria_user, only: [:show, :edit, :update]
-  before_action :set_user, only: [:show, :profile, :edit, :update]
+  before_action :baria_user, only: [:show, :edit, :update, :roles]
+  before_action :set_user, only: [:show, :profile, :edit, :update, :roles]
 
   def show
     @topic = Topic.new
@@ -12,6 +12,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+  end
+
+  def roles
   end
 
   def update

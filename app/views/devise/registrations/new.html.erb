@@ -14,25 +14,20 @@
         </section>
         <h2 class="form-title" id="sign-up">Sign up</h2>
         <div class="form-holder">
-          <label>NameID</label><br/>
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "input", placeholder: "nameID" %>
         </div>
         <div class="form-holder">
-          <label>Email</label><br/>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "you@example" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "Email" %>
         </div>
         <div class="form-holder">
-          <%= f.label :password %><br/>
-          <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
-          <% end %><br/>
-          <%= f.password_field :password, autocomplete: "new-password", class: "input", placeholder: "Enter your password" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "input", placeholder: "パスワード(6文字以上)" %>
         </div>
         <div class="form-holder">
-          <%= f.label :password_confirmation %><br/>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input", placeholder: "Re-type password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input", placeholder: "確認用パスワード" %>
         </div>
+        <br>
         <%= f.submit "Sign up", class: 'submit-btn' %>
+        <%= link_to "Log in", new_user_session_path, class: "submit-btn text-center", style: "text-decoration: none;" %>
       </div>
       <div class="center"></div>
     </div>

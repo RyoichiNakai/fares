@@ -29,6 +29,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.error-examination {
+  margin-top: 40px;
+}
+
 .title--hero {
   font-size: 5rem;
   color: #111111;
@@ -212,7 +216,7 @@
 .form-structor-sign-up {
   background-color: #222;
   border-radius: 15px;
-  height: 550px;
+  height: 670px;
   width: 350px;
   position: relative;
   overflow: hidden;
@@ -223,7 +227,7 @@
     top: 0;right:0;bottom:0;left:0;
     background-repeat: no-repeat;
     background-position: left bottom;
-    background-size: 520px;
+    background-size: 640px;
     background-image: url('https://as1.ftcdn.net/jpg/02/32/93/20/500_F_232932071_LCpoBBQlSuSnXVbVLDb7xtdHhbkqwHy7.jpg');
   }
   .sign-up {

@@ -23,28 +23,28 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to "User Home", user_path(current_user), class: "nav-link" %>
+            <%= link_to "ホーム", user_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Topics", topics_path, class: "nav-link" %>
+            <%= link_to "トピックス", topics_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "User Profile", profile_user_path(current_user), class: "nav-link" %>
+            <%= link_to "プロフィール", profile_user_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign out", destroy_user_session_path, class: "nav-link", method: :delete %>
+            <%= link_to "サインアウト", destroy_user_session_path, class: "nav-link", method: :delete %>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Recommender</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">レコメンダ</a>
             <div class="dropdown-menu">
               <% if current_user.isRecommender %>
-                <a class="dropdown-item" href="#">View the request</a>
+                <%= link_to "ユーザのリクエスト一覧を表示", topics_path,  class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
               <% else %>
-                <a class="dropdown-item" href="#">To Be Recommender</a>
+                <%= link_to "レコメンダになる", roles_user_path(current_user),  class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
               <% end %>
-              <a class="dropdown-item" href="#">※Coutions when Recommend</a>
+              <a class="dropdown-item" href="#">※レコメンダ誓約書</a>
             </div>
           </li>
       </ul>
