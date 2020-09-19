@@ -1,0 +1,34 @@
+​<%= render "devise/shared/error_messages", resource: @user %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 m-auto">
+      <h3 class="card-header" style="background-color: white;">レコメンダ登録</h3>​
+      <div class="m-auto w-75">
+        <h4 class="ml-4">誓約書</h4>
+        <div class="ml-4" style="border: 1px #999999 solid;">
+          <iframe src="https://drive.google.com/file/d/1wS2ffnyg8zO8fVzwo4fN4OpmYDLT2gYt/view?usp=sharing" width="100%" height="" ></iframe>
+        </div>
+        <%= form_for @user do |f| %>
+
+          <div class="w-50 m-auto">
+            <div class="form-holder">
+              <%= f.text_field :real_name, autofocus: true, autocomplete: "real_name", class: "input", placeholder: "本名" %>
+            </div>
+            ​
+            <div class="form-holder">
+              <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "input", placeholder: "住所" %>
+            </div>
+
+            <div class="form-holder">
+              <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "input", placeholder: "電話番号" %>
+            </div>
+
+            <br>
+            <% f.submit "登録", class: 'submit-btn' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
