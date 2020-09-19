@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_125328) do
+ActiveRecord::Schema.define(version: 2020_09_19_062310) do
+
+  create_table "recommenders", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "real_name"
+    t.string "phone_number"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "recommends", force: :cascade do |t|
     t.integer "topic_id"
@@ -46,9 +55,6 @@ ActiveRecord::Schema.define(version: 2020_09_17_125328) do
     t.string "profile_image_id"
     t.text "introduction"
     t.boolean "isRecommender", default: false, null: false
-    t.string "real_name"
-    t.string "phone_number"
-    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

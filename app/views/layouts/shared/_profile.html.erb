@@ -6,15 +6,18 @@
     <% end %>
   </h3>
   <div class="d-flex justify-content-center align-items-center m-2">
-    <%= attachment_image_tag user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: "200x200", style: "border-radius: 50%;"%>
+    <%= attachment_image_tag user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: "200x200", style: "border-radius: 50%;", class: "item_img"%>
   </div>
   <div class="d-flex justify-content-center align-items-center m-1">
     <div class="btn-group">
       <% unless current_page?(profile_user_path(user)) %>
         <%= link_to "プロフィールを確認", profile_user_path(user), class: "btn btn-md btn-outline-secondary", style: "text-decoration: none;"  %>
       <% end %>
-      <% if user.id == current_user.id %>
+      <% unless current_page?(edit_user_path(user)) %>
         <%= link_to "プロフィールを編集", edit_user_path(user), class: "btn btn-md btn-outline-secondary", style: "text-decoration: none;" %>
+      <% end %>
+      <% unless current_page?(user_path(user)) %>
+        <%= link_to "過去の投稿をみる", user_path(user), class: "btn btn-md btn-outline-secondary", style: "text-decoration: none;" %>
       <% end %>
     </div>
   </div>

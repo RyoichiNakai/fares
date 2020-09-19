@@ -1,5 +1,4 @@
 <div class="container">
-  ​<%= render "devise/shared/error_messages", resource: @user %>
   <div class="row">
     <div class="col-md-10 m-auto">
       <h3 class="card-header" style="background-color: white;">レコメンダ登録</h3>​
@@ -14,7 +13,7 @@
           </div>
           <br>
           <div id="recommender-form" style="display: none;">
-            <%= form_with model: @user do |f| %>
+            <%= form_with model: @recommender do |f| %>
               <h4>個人情報を入力してください</h4>
               <div class="form-group">
                 <label>本名</label>

@@ -1,20 +1,15 @@
 <div class="container">
   <%= render "devise/shared/error_messages", resource: @user %>
-  <h1>Edit Profile</h1>
+  <h3 class="card-header" style="background-color: white;">プロフィールを編集</h3>​
   <div class="row">
     <!-- left column -->
-    <div class="col-md-3">
-      <div class="card mb-3">
-        <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_cloth.jpg", size: "200x200", class: "profile_image" %>
-
-        <!-- edit form column -->
-      </div>
+    <div class="col-lg-4">
+      <%= render "layouts/shared/profile", user: @user %>
     </div>
-    <div class="col-md-9 personal-info">
-      <h3>Personal info</h3>
+    <div class="col-lg-8 personal-info">
       <%= form_with model: @user do |f| %>
         <label for="avatar">写真を選んでください</label><br>
-        <%= f.file_field :profile_image, class: "profile_image" %>
+        <%= f.file_field :profile_image, class: "upload-img" %>
         <div class="form-group">
           <%= f.label :name, class: "col-form-label", for: "name" %>
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "name", id: "name" %>
@@ -25,7 +20,7 @@
         </div>
         <div class="form-group">
           <label for="age">年齢 [歳]</label><br>
-          <%= f.select :age, {'Not select': 1, '~18': 2, '18~': 3, '20~': 4, '25~': 5, '30~': 6, '35~': 7, '40~': 8, '45~': 9, '50~': 10, '55~': 11, '60~': 12}, {}, {class: 'form-control', id: 'age'} %>
+          <%= f.select :age, {'未選択': 1, '~18': 2, '18~': 3, '20~': 4, '25~': 5, '30~': 6, '35~': 7, '40~': 8, '45~': 9, '50~': 10, '55~': 11, '60~': 12}, {}, {class: 'form-control', id: 'age'} %>
         </div>
         <div class="form-group">
           <label for="height">身長 [cm]</label><br>
@@ -50,9 +45,9 @@
         <div class="form-group">
           <% # introduction: 自己紹介プロフィール %>
           <label for="exampleTextarea">自己紹介</label>
-          <%= f.text_area :text, class: "form-control", id: "introduction", rows: "3" %>
+          <%= f.text_area :introduction, class: "form-control", id: "introduction", rows: "3" %>
         </div>
-        <%= f.submit "Update user profile", class: "btn btn-primary" %>
+        <%= f.submit "Update user profile", class: "btn btn-outline-secondary mb-3" %>
       <% end %>
     </div>
   </div>

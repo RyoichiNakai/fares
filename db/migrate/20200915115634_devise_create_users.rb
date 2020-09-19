@@ -42,10 +42,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :profile_image_id
       t.text :introduction
       t.boolean :isRecommender, default: false, null: false
-      t.string :real_name
-      t.string :phone_number
-      t.string :address
-
       t.timestamps null: false
     end
 

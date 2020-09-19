@@ -19,8 +19,10 @@
                      user GET    /users/:id(.:format)                                                                     users#show
                           PATCH  /users/:id(.:format)                                                                     users#update
                           PUT    /users/:id(.:format)                                                                     users#update
+             recommenders POST   /recommenders(.:format)                                                                  recommenders#create
+          new_recommender GET    /recommenders/new(.:format)                                                              recommenders#new
+              recommender GET    /recommenders/:id(.:format)                                                              recommenders#show
              profile_user GET    /users/:id/profile(.:format)                                                             users#profile
-               roles_user GET    /users/:id/roles(.:format)                                                               users#roles
          topic_recommends POST   /topics/:topic_id/recommends(.:format)                                                   recommends#create
      edit_topic_recommend GET    /topics/:topic_id/recommends/:id/edit(.:format)                                          recommends#edit
           topic_recommend DELETE /topics/:topic_id/recommends/:id(.:format)                                               recommends#destroy

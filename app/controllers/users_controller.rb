@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :baria_user, only: [:show, :edit, :update, :roles]
-  before_action :set_user, only: [:show, :profile, :edit, :update, :roles]
-  @@mode = "edit"
+  before_action :baria_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :profile, :edit, :update]
 
   def show
     @topic = Topic.new
@@ -13,34 +12,21 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @@mode = "edit"
-  end
-
-  def roles
-    @@mode = "roles"
   end
 
   def update
-    if @@mode == "roles"
-      @user.isRecommender = true
-    end
     if @user.update(user_params)
-      @@mode = "edit"
       redirect_to user_path(@user)
     else
-      if @@mode == "roles"
-        render :roles
-      else
-        render :edit
-      end
+      render :edit
     end
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :gender,
-                                 :age, :height, :weight, :west, :hip, :chest, :isRecommender,
-                                 :real_name, :phone_number, :address)
+                                 :age, :height, :weight, :west, :hip, :chest, :introduction, :isRecommender)
   end
 
   def baria_user
