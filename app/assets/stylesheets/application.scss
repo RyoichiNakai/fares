@@ -11,6 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  */
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import "bootswatch/cosmo/variables";
 @import "bootstrap";
 @import "bootswatch/cosmo/bootswatch";

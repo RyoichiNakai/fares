@@ -1,93 +1,59 @@
-<% # views/users/editでプロフィールを変更できるのでそこに記述 %>
-<% # headタグの部分はapp/views/layouts/application.html.erbで記入済みなので必要ない %>
-<% # todo:BootStrapのグリッドシステムの導入 %>
-<% # グリッドシステムで現在のプロフィール画像を横に置いてもいいかも %>
+<div class="container">
+  <%= render "devise/shared/error_messages", resource: @user %>
+  <h1>Edit Profile</h1>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-3">
+      <div class="card mb-3">
+        <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_cloth.jpg", size: "200x200", class: "profile_image" %>
 
-<h3 class="card-header">Request header</h3>
-<div class="card-body">
-  <h5 class="card-title">Please write your request</h5>
+        <!-- edit form column -->
+      </div>
+    </div>
+    <div class="col-md-9 personal-info">
+      <h3>Personal info</h3>
+      <%= form_with model: @user do |f| %>
+        <label for="avatar">写真を選んでください</label><br>
+        <%= f.file_field :profile_image, class: "profile_image" %>
+        <div class="form-group">
+          <%= f.label :name, class: "col-form-label", for: "name" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "name", id: "name" %>
+        </div>
+        <div class="form-group">
+          <label for="weight">性別</label><br>
+          <%= f.select :gender, {'未選択': 1, '男性': 2, '女性': 3, '未公開': 4}, {}, {class: 'form-control', id: 'gender'} %>
+        </div>
+        <div class="form-group">
+          <label for="age">年齢 [歳]</label><br>
+          <%= f.select :age, {'Not select': 1, '~18': 2, '18~': 3, '20~': 4, '25~': 5, '30~': 6, '35~': 7, '40~': 8, '45~': 9, '50~': 10, '55~': 11, '60~': 12}, {}, {class: 'form-control', id: 'age'} %>
+        </div>
+        <div class="form-group">
+          <label for="height">身長 [cm]</label><br>
+          <%= f.select :height, {'未選択': 1, '~139': 2, '140~': 3, '150~': 4, '160~': 5, '170~': 6, '180~': 7, '190~': 8, '200~': 9, '未公開': 10}, {}, {class: 'form-control', id: 'height'} %>
+        </div>
+        <div class="form-group">
+          <label for="weight">体重 [kg]</label><br>
+          <%= f.select :weight, {'未選択': 1, '~39': 2, '40~': 3, '50~': 4, '60~': 5, '70~': 6, '80~': 7, '90~': 8, '未公開': 9}, {}, {class: 'form-control', id: 'weight'} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :west, class: "col-form-label", for: "west" %>
+          <%= f.text_field :west, autofocus: true, autocomplete: "west", class: "form-control", placeholder: "west", id: "west" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :hip, class: "col-form-label", for: "hip" %>
+          <%= f.text_field :hip, autofocus: true, autocomplete: "hip", class: "form-control", placeholder: "hip", id: "hip" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :chest, class: "col-form-label", for: "chest" %>
+          <%= f.text_field :chest, autofocus: true, autocomplete: "chest", class: "form-control", placeholder: "chest", id: "chest" %>
+        </div>
+        <div class="form-group">
+          <% # introduction: 自己紹介プロフィール %>
+          <label for="exampleTextarea">自己紹介</label>
+          <%= f.text_area :text, class: "form-control", id: "introduction", rows: "3" %>
+        </div>
+        <%= f.submit "Update user profile", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% # ↓エラーメッセージのテンプレート，resourceが引数になっている %>
-<%= render "devise/shared/error_messages", resource: @user %>
-​
-<%= form_with model: @user do |f| %>
-  <div class="form-group">
-    <label for="avatar">Choose your picture:</label><br>
-    <%= f.attachment_field :profile_image %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :name, class: "col-form-label", for: "name" %>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "name", id: "name" %>
-  </div>
-  ​
-  <% # ↓f.selectの書き方，第1引数にカラム，第2引数にデータ，第3引数は空，第4引数はcssのclassとidを格納する %>
-  <div class="form-group">
-    <label for="age">select age [歳]</label><br>
-    <%= f.select :age, {'Not select': 1, '~18': 2, '18~': 3, '20~': 4, '25~': 5, '30~': 6, '35~': 7, '40~': 8, '45~': 9, '50~': 10, '55~': 11, '60~': 12}, {}, {class: 'form-control', id: 'age'} %>
-  </div>
-  ​
-  <div class="form-group">
-    <label for="height">select gender</label>
-    <select class="form-control" id="gender">
-      <option> Not select</option>
-      <option>Male</option>
-      <option>Female</option>
-      <option>Others</option>
-    </select>
-  </div>
-  ​
-  ​
-  <div class="form-group">
-    <label for="height">select height [cm]</label>
-    <select class="form-control" id="height">
-      <option>Not select</option>
-      <option>～139</option>
-      <option>140～</option>
-      <option>150～</option>
-      <option>160～</option>
-      <option>170～</option>
-      <option>180～</option>
-      <option>190～</option>
-      <option>200～</option>
-    </select>
-  </div>
-  ​
-  <div class="form-group">
-    <label for="weight">select weight [kg]</label>
-    <select class="form-control" id="weight">
-      <option>Not select</option>
-      <option>～39</option>
-      <option>40～</option>
-      <option>50～</option>
-      <option>60～</option>
-      <option>70～</option>
-      <option>80～</option>
-      <option>90～</option>
-    </select>
-  </div>
-  ​
-  ​
-  <div class="form-group">
-    <label class="col-form-label" for="west">West</label>
-    <input type="text" class="form-control" placeholder="west" id="west">
-  </div>
-  ​
-  <div class="form-group">
-    <label class="col-form-label" for="hip">Hip</label>
-    <input type="text" class="form-control" placeholder="hip" id="hip">
-  </div>
-  ​
-  <div class="form-group">
-    <label class="col-form-label" for="chest">Chest</label>
-    <input type="text" class="form-control" placeholder="chest" id="chest">
-  </div>
-  ​
-  <div class="form-group">
-    <% # introductionでカラムに自己プロフィールとかを書けるようにしたいて感じです %>
-    <label for="exampleTextarea">Other order</label>
-    <textarea class="form-control" id="Other" rows="3"></textarea>
-  </div>
-
-  <%= f.submit "Update user profile", class: "btn btn-primary" %>
-<% end %>
