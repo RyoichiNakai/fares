@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   def baria_user
     user = User.find(params[:id])
     unless user.id == current_user.id
+      flash[:alert] = "ページ遷移できません"
       redirect_to user_path(current_user)
     end
   end

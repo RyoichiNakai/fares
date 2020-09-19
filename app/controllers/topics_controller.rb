@@ -2,9 +2,11 @@ class TopicsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_topic, only: [:show, :destroy]
   before_action :baria_topic, only: [:show]
+  before_action :baria_topics, only: [:index]
 
   def index
-    @topics = Topic.all
+    @topics = Topic.all.page(params[:page]).per(6)
+    @user = current_user
   end
 
   def show
@@ -34,7 +36,14 @@ class TopicsController < ApplicationController
 
   def baria_topic
     topic = Topic.find(params[:id])
-    unless topic.user_id == current_user.id
+    unless current_user.isRecommender.present? or topic.user_id == current_user.id
+      flash[:alert] = "ページ遷移できません"
+      redirect_to user_path(current_user)
+    end
+  end
+
+  def baria_topics
+    unless current_user.isRecommender.present?
       flash[:alert] = "ページ遷移できません"
       redirect_to user_path(current_user)
     end

@@ -10,7 +10,7 @@
         <div class="card-body">
           <h5>服の好み・要望</h5>
           <p class="card-text"><%= @topic.text %></p>
-          <% if current_user.isRecommender or @topic.user_id != current_user.id %>
+          <% if current_user.isRecommender and @topic.user_id != current_user.id %>
           <div class="d-flex justify-content-center align-items-center m-1">
               <div class="btn-group">
                 <%= link_to "服の提案をする", topic_recommends_path(@topic), class: "btn btn-md btn-outline-secondary", style: "text-decoration: none;", method: :post %>
@@ -41,6 +41,7 @@
           <div class="d-flex justify-content-end">
             <div class="btn-group">
               <%= link_to "このレコメンダを評価する", user_path(@topic.user), class: "btn btn-outline-primary", style: "text-decoration: none;" %>
+              <%= link_to "通報する", user_path(@topic.user), class: "btn btn-outline-danger ml-2", style: "text-decoration: none;" %>
             </div>
           </div>
         </div>

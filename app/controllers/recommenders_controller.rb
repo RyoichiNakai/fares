@@ -1,5 +1,6 @@
 class RecommendersController < ApplicationController
   before_action :authenticate_user!
+  before_action :baria_recommender, only: [:new, :create]
 
   def new
     @recommender = Recommender.new
@@ -27,7 +28,9 @@ class RecommendersController < ApplicationController
     params.require(:recommender).permit(:real_name, :phone_number, :address)
   end
 
-  # def user_params
-  #   params.require(:user).permit(:isRecommender)
-  # end
+  def baria_recommender
+    unless current_user.isRecommender.present?
+      user_path(current_user)
+    end
+  end
 end
