@@ -11,7 +11,7 @@ class RecommendersController < ApplicationController
     @recommender.user = user
     user.update_attribute(:isRecommender, true)
     if @recommender.save
-      flash[:success] = "リコメンダになりました"
+      flash[:notice] = "リコメンダになりました"
       redirect_to user_path(current_user)
     else
       render 'users/show'

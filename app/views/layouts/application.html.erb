@@ -37,10 +37,10 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">レコメンダ</a>
             <div class="dropdown-menu">
               <% if not current_user.isRecommender %>
-                <%= link_to "レコメンダになる", new_recommender_path(current_user),  class: "dropdown-item"  %>
+                <%= link_to "レコメンダになる", new_recommender_path(current_user), class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
               <% end %>
-              <a class="dropdown-item" href="#">※レコメンダ誓約書</a>
+              <%= link_to "※レコメンダ誓約書", promise_recommender_path, class: "dropdown-item" %>
             </div>
           </li>
           <li class="nav-item">

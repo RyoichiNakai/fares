@@ -1,10 +1,3 @@
-<% if flash[:alert] %>
-  <div class="alert alert-dismissible alert-danger">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <%= flash[:alert]%>
-  </div>
-<% end %>
-
 <% if resource.errors.any? %>
   <div class="error-examination">
     <div class="alert alert-dismissible alert-danger">

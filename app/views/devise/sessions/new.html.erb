@@ -1,6 +1,6 @@
 <div class="devise-field">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= render "layouts/shared/flash_notice" %>
     <div class="form-structor-sign-in">
       <div class="sign-in">
         <section class="hero is-fullheight has-text-centered hero--bg">

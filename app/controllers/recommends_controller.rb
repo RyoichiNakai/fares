@@ -2,6 +2,9 @@ class RecommendsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_recommender
 
+  def promise
+  end
+
   def create
     @topic = Topic.find(params[:topic_id])
     @recommend = @topic.recommends.new(recommend_params)
