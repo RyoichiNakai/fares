@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_topic, only: [:show]
+  before_action :set_topic, only: [:show, :destroy]
   before_action :baria_topic, only: [:show]
 
   def index
@@ -29,7 +29,7 @@ class TopicsController < ApplicationController
 
   private
   def topic_params
-    params.require(:topic).permit(:image)
+    params.require(:topic).permit(:image, :text)
   end
 
   def baria_topic

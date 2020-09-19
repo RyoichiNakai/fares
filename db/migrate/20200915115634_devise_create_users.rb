@@ -41,6 +41,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.float :chest
       t.string :profile_image_id
       t.text :introduction
+      t.boolean :isChecked, default: false, null: false
       t.boolean :isRecommender, default: false, null: false
       t.boolean :isOfficial, default: false, null: false
       t.string :real_name

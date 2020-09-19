@@ -10,4 +10,7 @@ class User < ApplicationRecord
   has_many :recommends, dependent: :destroy
   validates :name, presence: true, format: { with: VALID_PASSWORD_REGEX, message: "は12文字までの半角英小文字・数字\nで構成してください。" }
   validates :introduction, length: { maximum: 50 }
+  validates :real_name, presence: true, on: :update
+  validates :address, presence: true, on: :update
+  validates :phone_number, presence: true, on: :update
 end

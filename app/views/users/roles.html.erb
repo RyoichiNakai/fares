@@ -1,32 +1,40 @@
-​<%= render "devise/shared/error_messages", resource: @user %>
 <div class="container">
+  ​<%= render "devise/shared/error_messages", resource: @user %>
   <div class="row">
     <div class="col-md-10 m-auto">
       <h3 class="card-header" style="background-color: white;">レコメンダ登録</h3>​
       <div class="m-auto w-75">
-        <h4 class="ml-4">誓約書</h4>
-        <div class="ml-4" style="border: 1px #999999 solid;">
-          <iframe src="https://drive.google.com/file/d/1wS2ffnyg8zO8fVzwo4fN4OpmYDLT2gYt/view?usp=sharing" width="100%" height="" ></iframe>
-        </div>
-        <%= form_for @user do |f| %>
-
-          <div class="w-50 m-auto">
-            <div class="form-holder">
-              <%= f.text_field :real_name, autofocus: true, autocomplete: "real_name", class: "input", placeholder: "本名" %>
-            </div>
-            ​
-            <div class="form-holder">
-              <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "input", placeholder: "住所" %>
-            </div>
-
-            <div class="form-holder">
-              <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "input", placeholder: "電話番号" %>
-            </div>
-
-            <br>
-            <% f.submit "登録", class: 'submit-btn' %>
+        <h4>誓約書</h4>
+        <iframe src="https://frs-bucket.s3.amazonaws.com/contract.pdf"
+                width="100%" height="1000px"></iframe>
+        <br>
+        <div class="m-auto">
+          <div class="d-flex justify-content-center align-items-center m-2 w-100">
+            <button id="check-button" type="button" class="btn btn-primary btn-lg">誓約書に同意する</button>
           </div>
-        <% end %>
+          <br>
+          <div id="recommender-form" style="display: none;">
+            <%= form_with model: @user do |f| %>
+              <h4>個人情報を入力してください</h4>
+              <div class="form-group">
+                <label>本名</label>
+                <%= f.text_field :real_name, autofocus: true, autocomplete: "real_name", class: "form-control", placeholder: "本名" %>
+              </div>
+              <div class="form-group">
+                <label>住所</label>
+                <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control", placeholder: "住所" %>
+              </div>
+              <div class="form-group">
+                <label>電話番号</label>
+                <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control", placeholder: "電話番号" %>
+              </div>
+              <br>
+              <div class="d-flex justify-content-end align-items-center mb-3">
+                <%= f.submit "レコメンダ登録", class: 'btn btn-secondary' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

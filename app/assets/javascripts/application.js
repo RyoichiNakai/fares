@@ -28,4 +28,8 @@ $(function(){
         // ここまで
         reader.readAsDataURL(e.target.files[0]);//取得したurlにアップロード画像のurlを挿入
     });
+    $('#check-button').click(function () {
+        $('#recommender-form').fadeIn();
+        $('input:visible').eq(0).focus();
+    })
 });
