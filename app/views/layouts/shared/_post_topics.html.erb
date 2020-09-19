@@ -1,12 +1,12 @@
 <div class="card mb-3">
   <h3 class="card-header">投稿する</h3>
   <div class="d-flex justify-content-center align-items-center m-2">
-    <%= attachment_image_tag topic, :image, :fill, 200, 200, fallback: "no_cloth.jpg", size: "200x200", class: "item_img" %>
+    <%= attachment_image_tag topic, :image, :fill, 200, 200, fallback: "no_cloth.jpg", size: "200x200", id: "item_img" %>
   </div>
   <%= form_with model: topic do |f| %>
     <div class="form-group m-2">
       <label for="avatar">写真を選んでください</label><br>
-      <%= f.file_field :image, class: "upload-img" %>
+      <%= f.attachment_field :image, id: "upload-img" %>
     </div>
     <br>
     <div class="form-group m-2">

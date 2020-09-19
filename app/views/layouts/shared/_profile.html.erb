@@ -2,11 +2,11 @@
   <h3 class="card-header">
     <%= user.name %>
     <% if user.isRecommender %>
-       (レコメンダ)
+      <i class="fab fa-pied-piper-hat"></i>
     <% end %>
   </h3>
   <div class="d-flex justify-content-center align-items-center m-2">
-    <%= attachment_image_tag user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: "200x200", style: "border-radius: 50%;", class: "item_img"%>
+    <%= attachment_image_tag user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: "200x200", style: "border-radius: 50%;", id: "profile-img" %>
   </div>
   <div class="d-flex justify-content-center align-items-center m-1">
     <div class="btn-group">
