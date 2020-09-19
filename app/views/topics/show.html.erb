@@ -25,16 +25,16 @@
     </div>
     <div class="col-lg-8">
       <h3 class="card-header" style="background-color: white;">レコメンダによる提案</h3>
-      <%#= @recommends.each do |recommend| %>
+      <% @recommends.each do |recommend| %>
         <div class="card text-white bg-secondary m-2" style="width: 100%; border-radius: 20px;">
-        <h5 class="card-header">レコメンダの名前さんによる提案</h5>
+        <h5 class="card-header"><%= recommend.user.name %>さんによる提案</h5>
         <div class="card-body">
           <div class="d-flex justify-content-start">
-            <%= attachment_image_tag @topic, :image, :fill, 200, 200, fallback: "no_cloth.jpg", size: "200x200", class: "m-1"%>
+            <%= attachment_image_tag recommend, :image, :fill, 200, 200, fallback: "no_cloth.jpg", size: "200x200", class: "m-1"%>
             <div class="p-2">
               <h5 class="card-title">提案内容</h5>
               <p class="card-text">
-                  これだとかっこいいよ
+                  <%= recommend.comment %>
               </p>
             </div>
           </div>
@@ -46,10 +46,10 @@
           </div>
         </div>
         <div class="card-footer d-flex justify-content-end align-items-center">
-          <small class="text-muted">30分前に投稿されました</small>
+          <small class="text-muted"><%= recommend.created_at %></small>
         </div>
       </div>
-      <%# end %>
+      <% end %>
     </div>
   </div>
 </div>

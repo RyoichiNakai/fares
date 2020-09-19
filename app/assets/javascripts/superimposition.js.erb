@@ -1,0 +1,24 @@
+//=require fabric
+var canvas_save;
+$(document).on('turbolinks:load', function () {
+    var canvas = new fabric.Canvas('canvasSI');
+    canvas_save = canvas;
+});
+function add_img(path){
+    fabric.Image.fromURL(path, function (oImg) {
+        oImg.set({left: 200,top: 100});
+        canvas_save.add(oImg);
+    });
+}
+function save_canvas(){
+    var cvs = document.getElementById("canvasSI");
+    var png = cvs.toDataURL();
+    document.getElementById("output_img").src = png;
+}
+function reset_canvas(){
+    var o = canvas_save.getActiveObject();
+    console.log(o);
+    canvas_save.remove(o);
+    canvas_save.discardActiveGroup();
+    canvas_save.renderAll();
+}

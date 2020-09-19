@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @recommends = Recommend.all
+    @recommends = @topic.recommends
   end
 
   def create

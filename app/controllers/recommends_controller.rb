@@ -13,10 +13,10 @@ class RecommendsController < ApplicationController
     @recommend.user_id = current_user.id
     # @todo:ここうまくいくかわからん
     if @recommend.save
-      redirect_to edit_topic_recommend_path(@topic, @recommend)
+      redirect_to topic_path(@topic)
     else
-      @recommends = Recommend.all
-      render 'topics/show'
+      @recommend = Recommend.new
+      render :new
     end
   end
 
