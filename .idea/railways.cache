@@ -15,6 +15,8 @@
                           PUT    /users(.:format)                                                                         devise/registrations#update
                           DELETE /users(.:format)                                                                         devise/registrations#destroy
                           POST   /users(.:format)                                                                         devise/registrations#create
+             profile_user GET    /users/:id/profile(.:format)                                                             users#profile
+      promise_recommender GET    /recommenders/promise(.:format)                                                          recommenders#promise
                 edit_user GET    /users/:id/edit(.:format)                                                                users#edit
                      user GET    /users/:id(.:format)                                                                     users#show
                           PATCH  /users/:id(.:format)                                                                     users#update
@@ -22,10 +24,8 @@
              recommenders POST   /recommenders(.:format)                                                                  recommenders#create
           new_recommender GET    /recommenders/new(.:format)                                                              recommenders#new
               recommender GET    /recommenders/:id(.:format)                                                              recommenders#show
-             profile_user GET    /users/:id/profile(.:format)                                                             users#profile
-      promise_recommender GET    /recommenders/promise(.:format)                                                          recommenders#promise
          topic_recommends POST   /topics/:topic_id/recommends(.:format)                                                   recommends#create
-     edit_topic_recommend GET    /topics/:topic_id/recommends/:id/edit(.:format)                                          recommends#edit
+      new_topic_recommend GET    /topics/:topic_id/recommends/new(.:format)                                               recommends#new
           topic_recommend DELETE /topics/:topic_id/recommends/:id(.:format)                                               recommends#destroy
                    topics GET    /topics(.:format)                                                                        topics#index
                           POST   /topics(.:format)                                                                        topics#create

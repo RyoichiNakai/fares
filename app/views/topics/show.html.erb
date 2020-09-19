@@ -13,7 +13,7 @@
           <% if current_user.isRecommender and @topic.user_id != current_user.id %>
           <div class="d-flex justify-content-center align-items-center m-1">
               <div class="btn-group">
-                <%= link_to "服の提案をする", topic_recommends_path(@topic), class: "btn btn-md btn-outline-secondary", style: "text-decoration: none;", method: :post %>
+                <%= link_to "服の提案をする", new_topic_recommend_path(@topic), class: "btn btn-md btn-outline-secondary", style: "text-decoration: none;" %>
               </div>
           </div>
           <% end %>

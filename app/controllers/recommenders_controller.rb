@@ -2,6 +2,9 @@ class RecommendersController < ApplicationController
   before_action :authenticate_user!
   before_action :baria_recommender, only: [:new, :create]
 
+  def promise
+  end
+
   def new
     @recommender = Recommender.new
   end
@@ -17,10 +20,6 @@ class RecommendersController < ApplicationController
     else
       render 'users/show'
     end
-  end
-
-  def show
-    @recommender = Recommender.find(params[:id])
   end
 
   private

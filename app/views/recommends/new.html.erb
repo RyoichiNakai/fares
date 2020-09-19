@@ -1,0 +1,48 @@
+<div class="superinposition" >
+  <h2> Fabric.js Test</h2>
+  <%# <div class="container-fluid"> %>
+  <div class="row">
+    <%= attachment_image_tag @topic, :image, :fill, 200, 200, fallback: "no_cloth.jpg", size: "200x200", class: "m-1"%>
+    <div class="col-lg-5" >
+      <canvas id="canvasSI" width="400" height="400" style="border:1px solid #000000;"></canvas>
+    </div>
+
+    ​
+    <div class="card mb-3">
+      <div class="form-group m-2">
+        <%= button_tag type: "button", onclick: "add_img('#{asset_path("ue.png")}')" do %>
+          <img src="<%= asset_path('ue.png') %>" alt="img" />
+        <% end %>
+      </div>
+      <div class="form-group m-2">
+        <%= button_tag type: "button", onclick: "add_img('#{asset_path("ue2.png")}')" do %>
+          <img src="<%= asset_path('ue2.png') %>" alt="img" />
+        <% end %>
+      </div>
+      <div class="form-group m-2">
+        <%= button_tag type: "button", onclick: "add_img('#{asset_path("sita.png")}')" do %>
+          <img src="<%= asset_path('sita.png') %>" alt="img" />
+        <% end %>
+      </div>
+      <div class="form-group m-2">
+        <%= button_tag type: "button", onclick: "add_img('#{asset_path("sita2.png")}')" do %>
+          <img src="<%= asset_path('sita2.png') %>" alt="img" />
+        <% end %>
+      </div>
+    </div>
+    ​
+  </div>
+
+  <div class="row">
+    <%= button_tag type: 'button', onclick: "save_canvas()" do %>
+      <%= '画像を保存' %>
+    <% end %>
+    ​
+    <%= button_tag type: 'button', onclick: "reset_canvas()" do %>
+      <%= '選択中の服を削除' %>
+    <% end %>
+    ​
+  </div>
+  <img id="output_img" />
+  ​
+</div>

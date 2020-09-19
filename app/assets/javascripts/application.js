@@ -14,6 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require fabric
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -24,16 +25,6 @@ $(function(){
         var reader = new FileReader();
         reader.onload = function (e) {
             $("#item_img").attr('src', e.target.result);
-        }
-        // ここまで
-        reader.readAsDataURL(e.target.files[0]);//取得したurlにアップロード画像のurlを挿入
-    });
-
-    $('#upload-profile').on('change', function (e) {
-        // ここから既存の画像のurlの取得
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#profile_img").attr('src', e.target.result);
         }
         // ここまで
         reader.readAsDataURL(e.target.files[0]);//取得したurlにアップロード画像のurlを挿入
