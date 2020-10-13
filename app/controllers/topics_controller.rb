@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
   before_action :baria_topics, only: [:index]
 
   def index
-    @topics = Topic.all.page(params[:page]).per(6)
+    @topics = Topic.page(params[:page]).per(6).reverse_order
     @user = current_user
   end
 
