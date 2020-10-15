@@ -40,8 +40,10 @@
           </div>
           <div class="d-flex justify-content-end">
             <div class="btn-group">
-              <%= link_to "このレコメンダを評価する", user_path(@topic.user), class: "btn btn-outline-primary", style: "text-decoration: none;" %>
-              <%= link_to "通報する", user_path(@topic.user), class: "btn btn-outline-danger ml-2", style: "text-decoration: none;" %>
+              <% if @topic.user == current_user %>
+                <%= link_to "このレコメンダを評価する", user_path(@topic.user), class: "btn btn-outline-primary", style: "text-decoration: none;" %>
+                <%= link_to "通報する", user_path(@topic.user), class: "btn btn-outline-danger ml-2", style: "text-decoration: none;" %>
+              <% end %>
             </div>
           </div>
         </div>
